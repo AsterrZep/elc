@@ -44,9 +44,10 @@ fn coverage_req(strict: bool) -> ExitCode {
         return ExitCode::FAILURE;
     }
 
+    // Solo `crates/`: este mismo archivo documenta el patrón de nombres de prueba y se
+    // contaría a sí mismo como cobertura.
     let mut covered = BTreeSet::new();
     scan_dir(&root.join("crates"), &mut covered);
-    scan_dir(&root.join("xtask"), &mut covered);
 
     let missing: Vec<&String> = declared.difference(&covered).collect();
     let percent = (declared.len() - missing.len()) as f64 / declared.len() as f64 * 100.0;
