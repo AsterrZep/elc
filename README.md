@@ -1,5 +1,7 @@
 # elc — CAD eléctrico residencial en Rust
 
+[![CI](https://github.com/AsterrZep/elc/actions/workflows/ci.yml/badge.svg)](https://github.com/AsterrZep/elc/actions/workflows/ci.yml)
+
 Diseño de instalaciones eléctricas residenciales en 2D: plano, circuito lógico, simulación
 (sobrecarga, diferencial, cortocircuito, caída de tensión), verificación de reglas normativas
 y reportes BOM / cuadro de cargas.
