@@ -1,0 +1,22 @@
+# Rust
+/target/
+**/*.rs.bk
+*.pdb
+
+# Cargo.lock se versiona a propósito (reproducibilidad del binario)
+
+# Entornos
+.env
+.env.*
+
+# Sistema / editor
+.DS_Store
+Thumbs.db
+.idea/
+*.iml
+.vscode/*
+!.vscode/extensions.json
+
+# Salidas de la app
+/out/
+*.elec.json.bak
