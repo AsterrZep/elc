@@ -73,8 +73,8 @@ pub enum UnitError {
 }
 
 macro_rules! quantity {
-    ($(#[$meta:meta])* $name:ident, $unit:literal) => {
-        $(#[$meta])*
+    ($name:ident, $unit:literal, $doc:literal) => {
+        #[doc = $doc]
         #[derive(Debug, Clone, Copy, PartialEq, PartialOrd, Default, Serialize, Deserialize)]
         #[serde(transparent)]
         pub struct $name(f64);
@@ -108,26 +108,11 @@ macro_rules! quantity {
     };
 }
 
-quantity!(
-    /// Corriente eléctrica en amperios.
-    Amps, "A"
-);
-quantity!(
-    /// Corriente residual en miliamperios.
-    Milliamps, "mA"
-);
-quantity!(
-    /// Tensión eléctrica en voltios.
-    Volts, "V"
-);
-quantity!(
-    /// Potencia en vatios.
-    Watts, "W"
-);
-quantity!(
-    /// Resistencia en ohmios.
-    Ohms, "Ω"
-);
+quantity!(Amps, "A", "Corriente eléctrica en amperios.");
+quantity!(Milliamps, "mA", "Corriente residual en miliamperios.");
+quantity!(Volts, "V", "Tensión eléctrica en voltios.");
+quantity!(Watts, "W", "Potencia en vatios.");
+quantity!(Ohms, "Ω", "Resistencia en ohmios.");
 
 #[cfg(test)]
 mod tests {
