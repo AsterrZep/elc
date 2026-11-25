@@ -1,0 +1,20 @@
+{
+  "id": "DEMO-2026",
+  "edition": "2026",
+  "supply": "SplitPhase120_240",
+  "frequency_hz": 60,
+  "rules": [
+    {
+      "rule_id": "DEMO-2026/210.8(A)/1",
+      "severity": "Error",
+      "citation": "Tomas en baño requieren protección GFCI (referencia parafraseada, pendiente de verificar)",
+      "verified": false,
+      "params": { "rooms": ["Bathroom"], "water_distance_mm": 1829 }
+    }
+  ],
+  "standard_heights_mm": {
+    "Switch": 1200,
+    "Receptacle": 350,
+    "Panel": 1700
+  }
+}

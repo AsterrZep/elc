@@ -1,0 +1,22 @@
+[package]
+name = "elec-cli"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+authors.workspace = true
+description = "CLI headless de elc: info, validate, simulate, report"
+
+[[bin]]
+name = "elec-cli"
+path = "src/main.rs"
+
+[dependencies]
+elec-core.workspace = true
+elec-profile.workspace = true
+elec-sim.workspace = true
+elec-rules.workspace = true
+elec-report.workspace = true
+clap.workspace = true
+serde_json.workspace = true

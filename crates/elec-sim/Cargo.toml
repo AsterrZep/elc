@@ -1,0 +1,15 @@
+[package]
+name = "elec-sim"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+authors.workspace = true
+description = "Solver nodal, protecciones y reloj de simulación de elc"
+
+[dependencies]
+elec-core.workspace = true
+elec-profile.workspace = true
+serde.workspace = true
+thiserror.workspace = true

@@ -1,0 +1,15 @@
+[package]
+name = "elec-profile"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+authors.workspace = true
+description = "NormProfile: reglas, tablas y cotas normativas como datos (INV-06)"
+
+[dependencies]
+elec-core.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+thiserror.workspace = true

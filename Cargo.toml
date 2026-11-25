@@ -1,0 +1,42 @@
+[workspace]
+resolver = "3"
+members = [
+    "crates/elec-core",
+    "crates/elec-profile",
+    "crates/elec-sim",
+    "crates/elec-rules",
+    "crates/elec-report",
+    "crates/elec-cli",
+    "xtask",
+]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.85"
+license = "LicenseRef-PolyForm-Noncommercial-1.0.0"
+repository = "https://github.com/AsterrZep/elc"
+authors = ["AsterrZep"]
+
+[workspace.dependencies]
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+uuid = { version = "1", features = ["v7", "serde"] }
+thiserror = "2"
+clap = { version = "4", features = ["derive"] }
+
+elec-core = { path = "crates/elec-core" }
+elec-profile = { path = "crates/elec-profile" }
+elec-sim = { path = "crates/elec-sim" }
+elec-rules = { path = "crates/elec-rules" }
+elec-report = { path = "crates/elec-report" }
+
+# egui recalcula todo por frame: sin optimizar dependencias, `cargo run` no es usable.
+[profile.dev.package."*"]
+opt-level = 2
+
+[profile.release]
+opt-level = 2
+lto = "thin"
+codegen-units = 1
+strip = "symbols"

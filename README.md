@@ -4,8 +4,8 @@ Diseño de instalaciones eléctricas residenciales en 2D: plano, circuito lógic
 (sobrecarga, diferencial, cortocircuito, caída de tensión), verificación de reglas normativas
 y reportes BOM / cuadro de cargas.
 
-> **Estado: pre-M0.** El repositorio contiene la especificación y la investigación. Aún no hay
-> código de la aplicación.
+> **Estado: M0 completado.** Workspace de crates headless, CI en tres sistemas, CLI y migrador
+> de esquema funcionando. El editor 2D (`elec-app`) llega en M1.
 
 ## Qué es y qué no es
 
@@ -47,14 +47,44 @@ Rust · `egui`/`eframe` · `nalgebra` (MNA) · `serde` JSON versionado · `rstar
 Metodología: Spec-Driven Development. Sin requisito no hay código; el criterio de aceptación se
 convierte en prueba antes de la implementación.
 
-## Compilar
+## Compilar y probar
 
 ```bash
-cargo build
-cargo test
+cargo build --workspace
+cargo test --workspace
+cargo clippy --workspace --all-targets -- -D warnings
+cargo fmt --all -- --check
 ```
 
-(Disponible a partir de M0.)
+## Usar el CLI
+
+```bash
+cargo run -p elec-cli -- --version
+cargo run -p elec-cli -- info examples/casa-minima.elec.json
+cargo run -p elec-cli -- validate examples/casa-minima.elec.json --profile examples/perfil-demo.json
+```
+
+`simulate` y `report` responden con su hito pendiente (M3 y M6): fallan a propósito antes que
+mentir con un resultado vacío.
+
+## Estructura
+
+```
+crates/elec-core      unidades, geometría entera, modelo, comandos, migraciones
+crates/elec-profile   NormProfile como datos (reglas, cotas, curvas)
+crates/elec-sim       estado de simulación, reloj, protecciones
+crates/elec-rules     motor DRC y hallazgos
+crates/elec-report    BOM y cuadro de cargas
+crates/elec-cli       interfaz headless para pruebas y automatización
+xtask                 cobertura de requisitos (cargo xtask coverage-req)
+docs/adr              decisiones de arquitectura (append-only)
+examples              proyecto y perfil de demostración
+```
+
+## Proceso
+
+Spec-Driven Development: sin `REQ` no hay código, y el criterio de aceptación se convierte en
+prueba antes de la implementación. Ver `CONSTITUTION.md`, `SPEC-v1.0` y `PLAN.md`.
 
 ## Licencia
 
