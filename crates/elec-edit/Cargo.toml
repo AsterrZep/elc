@@ -1,0 +1,14 @@
+[package]
+name = "elec-edit"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+authors.workspace = true
+description = "Sesión de edición de elc: cámara, snap, índice espacial e historial (sin UI)"
+
+[dependencies]
+elec-core.workspace = true
+serde_json.workspace = true
+rstar = "0.12"

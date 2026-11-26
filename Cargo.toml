@@ -6,6 +6,8 @@ members = [
     "crates/elec-sim",
     "crates/elec-rules",
     "crates/elec-report",
+    "crates/elec-edit",
+    "crates/elec-app",
     "crates/elec-cli",
     "xtask",
 ]
@@ -30,6 +32,7 @@ elec-profile = { path = "crates/elec-profile" }
 elec-sim = { path = "crates/elec-sim" }
 elec-rules = { path = "crates/elec-rules" }
 elec-report = { path = "crates/elec-report" }
+elec-edit = { path = "crates/elec-edit" }
 
 # egui recalcula todo por frame: sin optimizar dependencias, `cargo run` no es usable.
 [profile.dev.package."*"]

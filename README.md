@@ -6,8 +6,8 @@ Diseño de instalaciones eléctricas residenciales en 2D: plano, circuito lógic
 (sobrecarga, diferencial, cortocircuito, caída de tensión), verificación de reglas normativas
 y reportes BOM / cuadro de cargas.
 
-> **Estado: M0 completado.** Workspace de crates headless, CI en tres sistemas, CLI y migrador
-> de esquema funcionando. El editor 2D (`elec-app`) llega en M1.
+> **Estado: M1 completado.** Editor 2D con pan/zoom, snap, selección, undo/redo y guardado JSON.
+> La simulación (M3), el DRC (M5) y los reportes (M6) todavía responden con su hito pendiente.
 
 ## Qué es y qué no es
 
@@ -58,6 +58,19 @@ cargo clippy --workspace --all-targets -- -D warnings
 cargo fmt --all -- --check
 ```
 
+## Abrir el editor
+
+```bash
+cargo run -p elec-app -- --file examples/casa-minima.elec.json
+```
+
+Herramientas: seleccionar, muro (dos clics), habitación (vértices + Enter o doble clic),
+dispositivo y abertura (clic sobre un muro; Shift = puerta). Arrastra con el botón derecho para
+mover la vista, rueda para zoom, `Ctrl+Z`/`Ctrl+Shift+Z` para undo/redo y `Ctrl+S` para guardar.
+
+`--smoke` abre una ventana invisible, pinta tres frames y sale: sirve para comprobar el arranque
+en CI o en una máquina sin escritorio.
+
 ## Usar el CLI
 
 ```bash
@@ -77,6 +90,8 @@ crates/elec-profile   NormProfile como datos (reglas, cotas, curvas)
 crates/elec-sim       estado de simulación, reloj, protecciones
 crates/elec-rules     motor DRC y hallazgos
 crates/elec-report    BOM y cuadro de cargas
+crates/elec-edit      sesión de edición headless: cámara, snap, historial, comandos
+crates/elec-app       editor 2D egui/eframe (sin lógica propia)
 crates/elec-cli       interfaz headless para pruebas y automatización
 xtask                 cobertura de requisitos (cargo xtask coverage-req)
 docs/adr              decisiones de arquitectura (append-only)

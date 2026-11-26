@@ -1,0 +1,27 @@
+[package]
+name = "elec-app"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+authors.workspace = true
+description = "Editor 2D de elc (egui/eframe)"
+
+[[bin]]
+name = "elec-app"
+path = "src/main.rs"
+
+[dependencies]
+elec-core.workspace = true
+elec-edit.workspace = true
+serde_json.workspace = true
+# Solo glow (OpenGL): el renderer wgpu añade naga/wgpu-core y multiplica el tiempo de build sin
+# aportar nada a un plano 2D.
+eframe = { version = "0.37", default-features = false, features = [
+    "glow",
+    "default_fonts",
+    "clipboard",
+    "x11",
+    "wayland",
+] }
