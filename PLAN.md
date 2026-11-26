@@ -64,6 +64,9 @@ Cuatro reglas que ordenan todo lo demás:
 
 ### M1 · Modelo + editor 2D mínimo (2–3 semanas)
 
+**Estado:** completado el 2026-11-26; evidencia y límites en [`docs/hitos/M1.md`](docs/hitos/M1.md).
+La demo visual de la puerta queda pendiente de revisión manual.
+
 **Objetivo:** dibujar una vivienda y que sobreviva a guardar, cerrar y reabrir.
 
 **Entregables**
